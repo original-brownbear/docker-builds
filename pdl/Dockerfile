@@ -10,7 +10,7 @@ RUN apt-get update && echo oracle-java7-installer shared/accepted-oracle-license
   curl \
   && rm -rf /var/lib/apt/lists/*
 
-ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
+ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
 ENV MAVEN_VERSION 3.3.9
 
