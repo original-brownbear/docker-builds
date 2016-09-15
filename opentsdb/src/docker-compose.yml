@@ -1,0 +1,28 @@
+version: '2'
+services:
+  pg:
+    image: postgres
+    environment:
+     POSTGRES_USER: "postgres"
+     POSTGRES_PASSWORD: "postgres"
+     POSTGRES_DB: "pgsql"
+  opentsdb:
+    build: ./opentsdb
+    depends_on:
+      - zookeeper
+    ports:
+      - "4242:4242"
+  zookeeper:
+    build: ./zookeeper
+  hbase:
+    build: ./hbase
+    depends_on:
+      - zookeeper
+  namenode:
+    build: ./namenode
+    depends_on:
+     - zookeeper
+  datanode:
+    build: ./datanode
+    depends_on:
+     - namenode
